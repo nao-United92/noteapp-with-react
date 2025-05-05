@@ -4,7 +4,9 @@ import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState<
+    { id: number; title: string; content: string; modDate: number }[]
+  >([]);
   const onAddNote = () => {
     const newNote = {
       id: Date.now(),
