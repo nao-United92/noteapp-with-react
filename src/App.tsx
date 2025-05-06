@@ -8,6 +8,8 @@ function App() {
   const [notes, setNotes] = useState<
     { id: number; title: string; content: string; modDate: number }[]
   >([]);
+  const [activeNote, setActiveNote] = useState(false);
+
   const onAddNote = () => {
     const newNote = {
       id: uuid(),
@@ -28,6 +30,8 @@ function App() {
         onAddNote={onAddNote}
         notes={notes}
         onDeleteNote={onDeleteNote}
+        activeNote={activeNote}
+        setActiveNote={setActiveNote}
       />
       <Main />
     </div>
