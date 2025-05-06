@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
+import uuid from 'react-uuid';
 
 function App() {
   const [notes, setNotes] = useState<
@@ -9,7 +10,7 @@ function App() {
   >([]);
   const onAddNote = () => {
     const newNote = {
-      id: Date.now(),
+      id: uuid(),
       title: '新しいノート',
       content: 'ノートの内容です。',
       modDate: Date.now(),
@@ -17,9 +18,17 @@ function App() {
     setNotes([...notes, newNote]);
   };
 
+  const onDeleteNote = (id) => {
+    const filterNotes = notes.filter((note) => note.id !== id);
+    setNotes(filterNotes);
+  };
   return (
     <div className="App">
-      <Sidebar onAddNote={onAddNote} />
+      <Sidebar
+        onAddNote={onAddNote}
+        notes={notes}
+        onDeleteNote={onDeleteNote}
+      />
       <Main />
     </div>
   );
