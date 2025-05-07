@@ -1,6 +1,5 @@
-import React from 'react';
 import './Main.css';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import ReactMarkdown from 'react-markdown';
 
 const Main = ({ activeNote, onUpdateNote }) => {
   const onEditNote = (key, value) => {
